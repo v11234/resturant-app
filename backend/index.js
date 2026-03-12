@@ -19,7 +19,7 @@ connectCloudinary();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://resturant-app-peach.vercel.app",
+    origin: "https://resturant-app-topaz.vercel.app",
     credentials: true,
   })
 );
