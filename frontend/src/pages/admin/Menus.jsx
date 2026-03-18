@@ -39,7 +39,7 @@ const Menus = () => {
                 </div>
                 <p>{item?.name}</p>
                 <p>{item?.category?.name}</p>
-                <p>${item.price}</p>
+                <p>${item.price} FCFA</p>
                 <p
                   className="text-red-600  cursor-pointer hover:underline"
                   onClick={() => deleteMenu(item._id)}

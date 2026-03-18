@@ -54,7 +54,7 @@ const Checkout = () => {
             <p className="flex justify-between text-lg font-medium text-gray-700">
               <span>Total Amount:</span>
               <span className="text-green-600 font-semibold">
-                $. {totalPrice}
+                FCFA {totalPrice}
               </span>
             </p>
           </div>

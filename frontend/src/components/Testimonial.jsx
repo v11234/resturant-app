@@ -5,12 +5,12 @@ export default function Testimonial() {
         <div className="flex flex-col items-center px-5 py-4 relative">
           <img
             className="h-24 w-24 absolute -top-14 rounded-full"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
+            src="/daphne.jpeg"
             alt="userImage1"
           />
           <div className="pt-8 text-center">
             <h1 className="text-lg font-medium text-gray-800">
-              Donald Jackman
+              Daphne Martine
             </h1>
             <p className="text-gray-800/80">Content Creator</p>
           </div>
@@ -89,12 +89,12 @@ export default function Testimonial() {
         <div className="flex flex-col items-center px-5 py-4 relative">
           <img
             className="h-24 w-24 absolute -top-14 rounded-full"
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200"
+            src="/vanetti.jpeg"
             alt="userImage2"
           />
           <div className="pt-8 text-center">
             <h1 className="text-lg font-medium text-gray-800">
-              Richard Nelson
+           Vanetti junior
             </h1>
             <p className="text-gray-800/80">Instagram Influencer</p>
           </div>
@@ -173,12 +173,12 @@ export default function Testimonial() {
         <div className="flex flex-col items-center px-5 py-4 relative">
           <img
             className="h-24 w-24 absolute -top-14 rounded-full"
-            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&auto=format&fit=crop"
+            src="/daphne2.jpeg"
             alt="userImage3"
           />
           <div className="pt-8 text-center">
             <h1 className="text-lg font-medium text-gray-800">
-              James Washington
+             daphne martine
             </h1>
             <p className="text-gray-800/80">Marketing Manager</p>
           </div>

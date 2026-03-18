@@ -61,10 +61,10 @@ const Cart = () => {
                   {item.quantity}
                 </td>
                 <td className="py-3 px-4 text-center text-gray-700">
-                  $. {item.menuItem.price}
+                  FCFA {item.menuItem.price}
                 </td>
                 <td className="py-3 px-4 text-center text-gray-700 font-semibold">
-                  $. {item.menuItem.price * item.quantity}
+                  FCFA {item.menuItem.price * item.quantity}
                 </td>
                 <td className="py-3 px-4 text-center text-gray-700 font-semibold">
                   <X onClick={() => removeFromCart(item.menuItem._id)} />
@@ -76,7 +76,7 @@ const Cart = () => {
       </div>
       <div className="flex justify-between items-center mt-6">
         <h3 className="text-xl font-semibold">
-          Total: <span className="text-green-600">${totalPrice}</span>
+          Total: <span className="text-green-600">FCFA {totalPrice}</span>
         </h3>
         <button
           onClick={() => navigate("/checkout")}

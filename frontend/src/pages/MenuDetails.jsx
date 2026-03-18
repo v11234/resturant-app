@@ -82,7 +82,7 @@ const MenuDetails = () => {
               </h1>
               <div className="flex items-baseline gap-3">
                 <span className="text-4xl font-bold text-yellow-500">
-                  ${menu.price}
+                  ${menu.price} FCFA
                 </span>
                 <span className="text-gray-500 text-lg">per item</span>
               </div>
@@ -102,7 +102,7 @@ const MenuDetails = () => {
                 <span className="text-white text-lg font-semibold">
                   Total Amount
                 </span>
-                <span className="text-white text-3xl font-bold">$20</span>
+                <span className="text-white text-3xl font-bold">20 FCFA</span>
               </div>
 
               <button
