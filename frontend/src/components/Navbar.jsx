@@ -76,6 +76,15 @@ const Navbar = () => {
                 {cartCount > 0 ? cartCount : 0}
               </span>
             </button>
+            {!user && (
+              <button
+                onClick={() => navigate("/login")}
+                className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                aria-label="Login"
+              >
+                <UserCircle size={28} className="text-gray-700" />
+              </button>
+            )}
             {/* Login/Profile - Desktop */}
             <div className="hidden md:block">
               {user ? (
