@@ -19,11 +19,37 @@ const app = express();
 connectDB();
 connectCloudinary();
 
+const getAllowedOrigins = () => {
+  const origins = [
+    "http://localhost:5173",
+    process.env.CLIENT_URL,
+    process.env.ADMIN_URL,
+    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
+  ]
+    .filter(Boolean)
+    .map((origin) => origin.trim());
+
+  if (process.env.CORS_ORIGINS) {
+    process.env.CORS_ORIGINS.split(",")
+      .map((origin) => origin.trim())
+      .filter(Boolean)
+      .forEach((origin) => origins.push(origin));
+  }
+
+  return Array.from(new Set(origins));
+};
+
+const allowedOrigins = getAllowedOrigins();
+
 // middlewares
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://resturant-app-topaz.vercel.app", "http://localhost:5173"],
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(null, false);
+    },
     credentials: true,
   })
 );
