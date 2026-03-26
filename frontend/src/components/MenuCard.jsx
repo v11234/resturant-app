@@ -38,7 +38,9 @@ const MenuCard = ({ menu }) => {
         {/* Price and Add to Cart */}
         <div className="flex items-center justify-between mt-4">
           <div>
-            <p className="text-2xl font-bold text-gray-900">${menu.price} FCFA</p>
+            <p className="text-2xl font-bold text-gray-900">
+              FCFA {menu.price}
+            </p>
           </div>
 
           <button

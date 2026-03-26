@@ -82,7 +82,7 @@ const MenuDetails = () => {
               </h1>
               <div className="flex items-baseline gap-3">
                 <span className="text-4xl font-bold text-yellow-500">
-                  ${menu.price} FCFA
+                  FCFA {menu.price}
                 </span>
                 <span className="text-gray-500 text-lg">per item</span>
               </div>
