@@ -48,6 +48,11 @@ const AppContextProvider = ({ children }) => {
   // 🔹 Add to Cart function
   const addToCart = async (menuId) => {
     try {
+      if (!user) {
+        toast.error("Please login or register first");
+        navigate("/login");
+        return;
+      }
       const { data } = await axios.post("/api/cart/add", {
         menuId,
         quantity: 1,
