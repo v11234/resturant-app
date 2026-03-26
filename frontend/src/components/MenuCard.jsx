@@ -4,7 +4,7 @@ import { ShoppingCart } from "lucide-react";
 const MenuCard = ({ menu }) => {
   const { navigate, addToCart } = useContext(AppContext);
   return (
-    <div lassName="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       {/* Image Section  */}
       <div
         onClick={() => navigate(`/menu-details/${menu._id}`)}

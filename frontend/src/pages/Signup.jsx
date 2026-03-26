@@ -30,7 +30,8 @@ const Signup = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      const message = error?.response?.data?.message || "Something went wrong";
+      toast.error(message);
     } finally {
       setLoading(false);
     }

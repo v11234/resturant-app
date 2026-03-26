@@ -102,7 +102,9 @@ const MenuDetails = () => {
                 <span className="text-white text-lg font-semibold">
                   Total Amount
                 </span>
-                <span className="text-white text-3xl font-bold">20 FCFA</span>
+                <span className="text-white text-3xl font-bold">
+                  FCFA {menu.price * quantity}
+                </span>
               </div>
 
               <button
