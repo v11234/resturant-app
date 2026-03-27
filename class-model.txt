@@ -1,0 +1,148 @@
+RESTAURANT APP - CLASS/ATTRIBUTE/METHOD/RELATIONSHIP SUMMARY
+===========================================================
+
+1) DOMAIN MODELS (Mongoose)
+---------------------------
+Class: User
+Attributes:
+- name: String (required)
+- email: String (required, unique)
+- password: String (required)
+- isAdmin: Boolean (default false)
+- timestamps: createdAt, updatedAt
+Common Methods (Mongoose/usage):
+- create(), findOne(), findById(), save()
+
+Class: Category
+Attributes:
+- name: String (required, unique, trim)
+- image: String (required)
+- timestamps: createdAt, updatedAt
+Common Methods:
+- create(), find(), findById(), findByIdAndDelete(), save()
+
+Class: Menu
+Attributes:
+- name: String (required)
+- description: String (required)
+- price: Number (required)
+- image: String (required)
+- category: ObjectId -> Category (required)
+- isAvailable: Boolean (default true)
+- timestamps: createdAt, updatedAt
+Common Methods:
+- create(), find(), findById(), findByIdAndDelete(), save()
+
+Class: Cart
+Attributes:
+- user: ObjectId -> User (required)
+- items: [CartItem]
+- timestamps: createdAt, updatedAt
+Class: CartItem (embedded)
+- menuItem: ObjectId -> Menu (required)
+- quantity: Number (required)
+Common Methods:
+- findOne(), save()
+
+Class: Order
+Attributes:
+- user: ObjectId -> User (required)
+- items: [OrderItem]
+- totalAmount: Number (required)
+- address: String (required)
+- status: Enum {Pending, Preparing, Delivered}
+- paymentMethod: String (default "Cash on Delivery")
+- timestamps: createdAt, updatedAt
+Class: OrderItem (embedded)
+- menuItem: ObjectId -> Menu (required)
+- quantity: Number (required)
+Common Methods:
+- create(), find(), findById(), save()
+
+Class: Booking
+Attributes:
+- user: ObjectId -> User (required)
+- name: String (required)
+- phone: String (required)
+- numberOfPeople: Number (required, min 1)
+- date: String (required)
+- time: String (required)
+- note: String (default "")
+- status: Enum {Pending, Approved, Cancelled}
+- timestamps: createdAt, updatedAt
+Common Methods:
+- create(), find(), findById(), save()
+
+
+2) CONTROLLER / SERVICE "CLASSES" (Backend)
+-------------------------------------------
+AuthController:
+- registerUser(name, email, password)
+- loginUser(email, password)
+- adminLogin(email, password)
+- logoutUser()
+- getProfile()
+- isAuth()
+
+CategoryController:
+- addCategory(name, imageFile)
+- getAllCategories()
+- updateCategory(id, name, imageFile)
+- deleteCategory(id)
+
+MenuController:
+- addMenuItem(name, description, price, category, imageFile)
+- getAllMenuItems()
+- updateMenuItem(id, name, description, price, category, isAvailable, imageFile)
+- deleteMenuItem(id)
+
+CartController:
+- addToCart(menuId, quantity)
+- getCart()
+- removeFromCart(menuId)
+
+OrderController:
+- placeOrder(address, paymentMethod)  // consumes Cart
+- getUserOrders()
+- getAllOrders()
+- updateOrderStatus(orderId, status)
+
+BookingController:
+- createBooking(name, phone, numberOfPeople, date, time, note)
+- getUserBookings()
+- getAllBookings()
+- updateBookingStatus(bookingId, status)
+
+
+3) FRONTEND STATE MODULE (React Context)
+---------------------------------------
+Module: AppContextProvider
+State (attributes):
+- user, admin, categories, menus, cart, totalPrice, loading
+Methods:
+- isAuth()
+- fetchCategories()
+- fetchMenus()
+- fetchCartData()
+- addToCart(menuId)
+- setLoading(), setUser(), setAdmin()
+Used by:
+- Public pages (Menu, Cart, Checkout, Bookings, Orders)
+- Admin pages (Dashboard, Menus, Categories, Orders, Bookings)
+
+
+4) RELATIONSHIPS (UML-STYLE)
+----------------------------
+User 1 -- 1 Cart
+User 1 -- * Order
+User 1 -- * Booking
+Category 1 o-- * Menu                 (aggregation)
+Cart 1 *-- * CartItem                  (composition)
+Order 1 *-- * OrderItem                (composition)
+CartItem *-- 1 Menu                    (aggregation reference)
+OrderItem *-- 1 Menu                   (aggregation reference)
+Booking -- User                        (association)
+
+Derived/Dependency Notes:
+- Order.totalAmount is computed from Cart.items * Menu.price at placement time.
+- Booking time slots are checked for conflicts (date + time + status != Cancelled).

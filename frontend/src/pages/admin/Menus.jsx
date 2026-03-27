@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
-import { CircleX } from "lucide-react";
+import { CircleX, Pencil } from "lucide-react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 const Menus = () => {
   const { menus, fetchMenus, axios } = useContext(AppContext);
 
@@ -41,12 +42,20 @@ const Menus = () => {
                 <p>{item?.name}</p>
                 <p>{item?.category?.name}</p>
                 <p>FCFA {item.price}</p>
-                <p
-                  className="text-red-600  cursor-pointer hover:underline"
-                  onClick={() => deleteMenu(item._id)}
-                >
-                  <CircleX />
-                </p>
+                <div className="flex items-center gap-3">
+                  <Link
+                    to={`/admin/menus/edit/${item._id}`}
+                    className="text-blue-600 hover:underline"
+                  >
+                    <Pencil />
+                  </Link>
+                  <button
+                    className="text-red-600 cursor-pointer hover:underline"
+                    onClick={() => deleteMenu(item._id)}
+                  >
+                    <CircleX />
+                  </button>
+                </div>
               </div>
               <hr className="w-full text-gray-300" />
             </div>

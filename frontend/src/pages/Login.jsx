@@ -24,9 +24,13 @@ const Login = () => {
       setLoading(true);
       const { data } = await axios.post("/api/auth/login", formData);
       if (data.success) {
-        setUser(true);
+        setUser(data.user);
         toast.success(data.message);
-        navigate("/");
+        if (data.user?.role === "delivery") {
+          navigate("/delivery");
+        } else {
+          navigate("/");
+        }
       } else {
         toast.error(data.message);
       }

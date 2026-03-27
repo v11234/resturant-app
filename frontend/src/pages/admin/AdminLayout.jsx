@@ -7,6 +7,7 @@ import {
   Grid3X3,
   ShoppingCart,
   BookAIcon,
+  Users,
   X,
   Menu,
 } from "lucide-react";
@@ -53,6 +54,11 @@ const AdminLayout = () => {
       path: "/admin/bookings",
       name: "Bookings",
       icon: BookAIcon,
+    },
+    {
+      path: "/admin/personnel",
+      name: "Personnel",
+      icon: Users,
     },
   ];
 

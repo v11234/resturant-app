@@ -90,6 +90,7 @@ const Orders = () => {
                     <option value="Pending">Pending</option>
                     <option value="Preparing">Preparing</option>
                     <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
                   </select>
                 </div>
               </div>

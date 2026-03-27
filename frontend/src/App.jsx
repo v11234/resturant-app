@@ -24,6 +24,9 @@ import Menus from "./pages/admin/Menus";
 import Orders from "./pages/admin/Orders";
 import Bookings from "./pages/admin/Bookings";
 import Dashboard from "./pages/admin/Dashboard";
+import EditMenu from "./pages/admin/EditMenu";
+import Personnel from "./pages/admin/Personnel";
+import DeliveryOrders from "./pages/DeliveryOrders";
 const App = () => {
   const adminPath = useLocation().pathname.includes("admin");
   const { admin } = useContext(AppContext);
@@ -43,6 +46,7 @@ const App = () => {
         <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/delivery" element={<DeliveryOrders />} />
 
         {/* admin routes  */}
         <Route path="/admin" element={admin ? <AdminLayout /> : <AdminLogin />}>
@@ -60,10 +64,18 @@ const App = () => {
             element={admin ? <Categories /> : <AdminLogin />}
           />
           <Route path="menus" element={admin ? <Menus /> : <AdminLogin />} />
+          <Route
+            path="menus/edit/:id"
+            element={admin ? <EditMenu /> : <AdminLogin />}
+          />
           <Route path="orders" element={admin ? <Orders /> : <AdminLogin />} />
           <Route
             path="bookings"
             element={admin ? <Bookings /> : <AdminLogin />}
+          />
+          <Route
+            path="personnel"
+            element={admin ? <Personnel /> : <AdminLogin />}
           />
         </Route>
       </Routes>
